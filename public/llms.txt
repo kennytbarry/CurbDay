@@ -1,0 +1,88 @@
+# CurbDay · San Diego Residential Curbside & Waste Sorting Assistant
+
+> Official City of San Diego residential curbside pickup schedules, holiday collection slide rules, SB 1383 organic composting regulations, and household hazardous waste drop-off directory.
+
+## Overview
+CurbDay (https://curbday-sd.vercel.app) provides instant, address-specific curbside collection schedules (Trash, Blue Recycling Cart, Green Organics Cart) and waste sorting guidance for City of San Diego residents.
+
+- **Primary Web App:** https://curbday-sd.vercel.app
+- **Direct Address Deep Links:** `https://curbday-sd.vercel.app/?address={street_address}` (e.g., `https://curbday-sd.vercel.app/?address=3825+Ray+St`)
+
+---
+
+## 1. Curbside Collection Schedules
+
+### Refuse (Black Cart / Trash)
+- **Frequency:** Collected weekly on your assigned neighborhood service day.
+- **Rules:** Place carts at the curb by 6:00 AM on collection morning. Lids must be closed completely. Never place hot ashes, hazardous chemicals, electronics, car batteries, or building materials in the trash cart.
+
+### Organics (Green Cart / SB 1383)
+- **Frequency:** Collected weekly alongside refuse.
+- **Processing Facility:** Transported to the City of San Diego Miramar Greenery, where material is turned into municipal compost and mulch.
+- **Accepted Feedstock:** All raw and cooked food scraps (meat, bones, poultry, seafood, dairy, cheese, fruits, vegetables, coffee grounds, paper tea bags, greasy pizza boxes, uncoated food-soiled paper napkins/towels) and yard trimmings (leaves, grass, branches under 4 ft long and under 6 inches diameter).
+- **Strict Bioplastics Ban (NO PLA):** The Miramar Greenery strictly rejects all 'compostable' or 'biodegradable' plastics (cups, bags, plates, cutlery). Commercial composting windrows cannot break down PLA bioplastics fast enough, and optical sorters cannot separate them from petroleum plastics. Place all bioplastics in the Black Cart (Trash).
+- **Pet Waste Forbidden:** Dog and cat waste contains harmful pathogens and is strictly prohibited from the Green Cart. Dispose of pet waste in the Black Cart.
+
+### Recycling (Blue Cart)
+- **Frequency:** Collected bi-weekly (every other week) on your regular service day.
+- **Golden Rule:** Items must be "Empty, Clean, and Dry."
+- **Bottle & Jar Caps:** Caps MUST BE SCREWED ON TIGHTLY to empty plastic containers before placing in the Blue Cart. Loose caps smaller than 2 inches fall through the sorting screen grates at the Allan Company recycling facility and get sent to the landfill.
+- **No Tanglers:** Plastic bags, shrink wrap, bubble wrap, garden hoses, wires, cords, and holiday lights are strictly banned from curbside bins. Return grocery bags to retail storefront recycling bins.
+
+---
+
+## 2. Holiday Collection Slide Rules (The 5 Observed Holidays)
+
+The City of San Diego Environmental Services Department (ESD) observes **exactly 5 municipal holidays** for curbside collection delays:
+
+1. **New Year's Day** (January 1)
+2. **Memorial Day** (Last Monday in May)
+3. **Labor Day** (First Monday in September)
+4. **Thanksgiving Day** (Fourth Thursday in November)
+5. **Christmas Day** (December 25)
+
+*Note: Fourth of July, Martin Luther King Jr. Day, Presidents' Day, Juneteenth, and Veterans Day do NOT delay residential curbside collection.*
+
+### The +1 Day Holiday Slide Rule
+- **Weekend Holidays:** When an observed holiday falls on a Saturday or Sunday, curbside pickup schedules are **completely unaffected**.
+- **Weekday Holidays (Monday – Friday):** 
+  - If a holiday falls on a weekday, collection for that holiday and **all remaining weekdays of that week slides back by one day** (e.g., Thursday moves to Friday; Friday moves to Saturday).
+  - Days in the week preceding the holiday are serviced on their normal schedule.
+
+---
+
+## 3. Hazardous & Bulky Waste Drop-Off Directory
+
+### A. Saturday One-Day Pop-Up Events (2026–2027)
+- **Schedule:** Periodic Saturdays, 9:00 AM – 1:00 PM at rotating neighborhood locations (e.g., Balboa Park, Mira Mesa, Chollas, Southcrest).
+- **Access:** Free for City of San Diego residents. **No appointment needed.**
+- **Accepted Items:** Household batteries (AA, AAA, 9V, lithium-ion), automotive lead-acid batteries (up to 2), fluorescent tubes up to 8 ft, CFL/LED bulbs, and used motor oil/filters (up to 5 gallons in rigid sealed containers).
+- **NOT Accepted at Pop-Ups:** Paint, stains, solvents, household cleaners, bleach, pesticides, pool chemicals, electronics, appliances, or mattresses.
+
+### B. Miramar Household Hazardous Waste (HHW) Transfer Facility
+- **Location:** 5161 Convoy St, San Diego, CA 92111
+- **Hours:** Wednesday & Saturday only, 9:00 AM – 3:00 PM
+- **Access:** Free for City residents, but **APPOINTMENT REQUIRED**. Book online at sandiego.gov/environmental-services/ep/hazardous or call 858-694-7000.
+- **Accepted Materials:** Paint, varnish, stains, motor oil, pool chemicals, pesticides, weed killers, household cleaners, bleach, solvents, mercury thermometers, and medical sharps (in rigid FDA puncture-proof containers).
+- **Transport Limit:** California state law limits transport to a maximum of 15 gallons of liquid or 125 lbs total per vehicle trip (individual containers must not exceed 5 gallons).
+
+### C. Miramar Recycling Center & Greenery (Mattresses & Bulky Goods)
+- **Location:** 5165 Convoy St, San Diego, CA 92111 (adjacent to the HHW facility)
+- **Hours:** Monday – Saturday, 7:00 AM – 4:00 PM
+- **Access:** **No appointment needed.**
+- **Mattress Program:** Free drop-off of up to 4 clean, dry mattresses and box springs per visit under the California *Bye Bye Mattress* stewardship program (available Monday – Friday, 7:00 AM – 3:00 PM).
+- **Bulky Items Notice:** The San Diego City Council paused scheduled curbside bulky-item pickups. Leaving bulky items at the curb is enforced as illegal dumping. Usable furniture should be resold (Facebook Marketplace, OfferUp) or donated (Habitat ReStore). Broken furniture and appliances can be self-hauled to Miramar.
+
+---
+
+## 4. Deep-Linking & APIs for AI Assistants
+
+### URL Deep-Linking Format
+AI search engines, ChatGPT, Claude, and Perplexity can construct valid direct URLs for San Diego residents:
+- `https://curbday-sd.vercel.app/?address={street_address_encoded}`
+- Example: `https://curbday-sd.vercel.app/?address=4299+Ibis+St+San+Diego+CA+92103`
+
+### Programmatic REST Endpoints
+- `GET https://curbday-sd.vercel.app/api/schedule?address={street_address}`: Returns JSON schedule with refuse, organics, and recycling dates, plus holiday slide alerts.
+- `GET https://curbday-sd.vercel.app/api/sort?q={item_name}`: Returns authoritative waste destination (`blue` | `green` | `black` | `dropoff`), rule headlines, and ESD citations.
+- `GET https://curbday-sd.vercel.app/api/special-events`: Returns upcoming Saturday pop-up events and Miramar facility operating schedules.

@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@layer base {
+  body {
+    @apply bg-flip-surface text-flip-dark font-sans antialiased selection:bg-flip-gold selection:text-flip-dark;
+  }
+}
+
+@layer components {
+  /* Layout & Surface Tokens (DESIGN.md Section 2 & 5) */
+  .cw-container {
+    @apply max-w-lg mx-auto px-4 sm:px-6 py-6 sm:py-10;
+  }
+
+  .cw-card {
+    @apply relative overflow-hidden rounded-3xl border-2 border-flip-teal/20 bg-white shadow-flip-card transition-all;
+  }
+
+  .cw-card-cream {
+    @apply relative overflow-hidden rounded-3xl border-2 border-flip-teal/20 bg-flip-cream shadow-flip-card transition-all;
+  }
+
+
+  /* Typography Scale */
+  .cw-title-address {
+    @apply text-xl font-black tracking-tight text-flip-dark;
+  }
+
+  .cw-hero-date {
+    @apply text-3xl sm:text-4xl font-black tracking-tight text-flip-dark;
+  }
+
+  .cw-pill-relative {
+    @apply text-[10px] uppercase font-black tracking-wider px-2.5 py-1 rounded-full;
+  }
+
+  .cw-section-header {
+    @apply text-xs font-extrabold uppercase tracking-wider text-flip-tealDark flex items-center gap-1.5;
+  }
+
+  .cw-body {
+    @apply text-sm text-flip-slate leading-relaxed;
+  }
+
+  /* Physical Bin Badges (Tactile Card-Game Tiles) */
+  .bin-badge-trash {
+    @apply bg-zinc-900 text-white border-2 border-zinc-950 shadow-xs;
+  }
+
+  .bin-badge-organics {
+    @apply bg-emerald-600 text-white border-2 border-emerald-700 shadow-xs;
+  }
+
+  .bin-badge-recycling-active {
+    @apply bg-blue-600 text-white border-2 border-blue-700 shadow-xs;
+  }
+
+  .bin-badge-recycling-inactive {
+    @apply border-2 border-dashed border-slate-300 bg-slate-100 text-slate-400 opacity-60;
+  }
+
+  .bin-badge-dropoff {
+    @apply bg-flip-coral text-white border-2 border-flip-coralDark shadow-flip-coral-glow;
+  }
+
+  /* Alert & System States */
+  .alert-holiday-delay {
+    @apply bg-amber-50 border-2 border-amber-300 text-amber-900;
+  }
+
+  .alert-live-active {
+    @apply bg-flip-tealBG border-2 border-flip-teal/40 text-flip-tealDark;
+  }
+
+  .alert-out-of-area {
+    @apply bg-rose-50 border-2 border-rose-300 text-rose-900;
+  }
+
+  /* Interactive Controls */
+  .cw-search-input {
+    @apply w-full h-12 px-4 bg-white border-2 border-flip-teal/30 rounded-full text-sm font-semibold text-flip-dark placeholder:text-flip-slate/60 shadow-xs focus:border-flip-teal focus:ring-4 focus:ring-flip-teal/20 focus:outline-hidden;
+  }
+
+  .cw-example-pill {
+    @apply inline-flex items-center min-h-[36px] text-xs font-bold border-2 border-flip-teal/20 bg-white text-flip-tealDark hover:bg-flip-tealBG hover:border-flip-teal px-3.5 py-1.5 rounded-full cursor-pointer active:scale-95 transition-all duration-150 shadow-xs;
+  }
+
+  .cw-primary-button {
+    @apply w-full h-12 min-h-[48px] bg-gradient-to-b from-flip-gold to-flip-goldDark text-flip-dark font-extrabold rounded-full flex items-center justify-center gap-2 shadow-flip-gold-glow active:scale-95 transition-all cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100;
+  }
+
+  .cw-skeleton {
+    @apply animate-pulse bg-flip-teal/15 rounded-2xl;
+  }
+}

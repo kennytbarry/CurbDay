@@ -1,0 +1,46 @@
+{
+  "name": "curbday",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:publish": "node --test scripts/__tests__/publish.test.mjs",
+    "publish": "node scripts/publish.mjs",
+    "eval": "vitest run lib/__tests__/esd-knowledge.test.ts",
+    "eval:live": "node --env-file-if-exists=.env.local scripts/eval-sorter.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "@vercel/analytics": "^2.0.1",
+    "lucide-react": "^0.469.0",
+    "next": "^16.4.2",
+    "nodemailer": "^10.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.10.2",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "eslint": "^10.13.0",
+    "eslint-config-next": "^16.4.2",
+    "postcss": "^8.5.30",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.7.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0 || >=26.0.0"
+  }
+}

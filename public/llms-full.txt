@@ -1,0 +1,166 @@
+# CurbDay Full Knowledge Base & Ground Truth Collateral (San Diego Curbside & Waste Sorting)
+
+This document is the full, unabridged knowledge base for CurbDay (https://curbday-sd.vercel.app), designed for direct ingestion by Large Language Models (LLMs), AI assistants, and retrieval-augmented search engines.
+
+---
+
+## 1. About CurbDay
+CurbDay is a purpose-built public utility application for City of San Diego residents to resolve curbside trash, recycling, and organic waste schedules and sorting dilemmas.
+
+- Web: https://curbday-sd.vercel.app
+- Coverage: City of San Diego serviced single-family residences and small multi-family homes serviced by the City Environmental Services Department (ESD).
+- Primary Capabilities:
+  1. Address-level pickup calendar and bi-weekly recycling schedule resolution.
+  2. Automatic holiday slide calculation (1-day postponement).
+  3. Interactive, AI-backed waste advisor ("What Goes Where?").
+  4. One-click Apple Calendar, Google Calendar, and ICS calendar subscriptions.
+
+---
+
+## 2. Municipal Collection Schedule Rules
+
+### Weekly vs. Bi-Weekly Collection Cadence
+- **Refuse / Trash (Black Cart):** Collected once per week on the designated collection day (Monday through Friday).
+- **Organics / SB 1383 (Green Cart):** Collected once per week on the same day as trash.
+- **Recycling (Blue Cart):** Collected bi-weekly (every other week) on the same day of the week as trash. The status alternates between "Active Pickup" weeks and "Stays In" parked weeks.
+
+### Holiday Collection Delay Policy ("Holiday Slide")
+The City of San Diego observes six municipal collection holidays per year:
+1. **New Year's Day (January 1)**
+2. **Memorial Day (Last Monday in May)**
+3. **Fourth of July (Independence Day)**
+4. **Labor Day (First Monday in September)**
+5. **Thanksgiving Day (Fourth Thursday in November)**
+6. **Christmas Day (December 25)**
+
+#### Holiday Slide Calculation Logic:
+- If a holiday falls on a weekday (Monday–Friday):
+  - Collections on days *before* the holiday occur on their normal schedule.
+  - Collections on the holiday itself, and on all subsequent weekdays of that week, are delayed by one business day.
+  - Friday customers receive Saturday collection during a holiday slide week.
+- If a holiday falls on a Saturday or Sunday, there is **no delay** in curbside collection for the preceding or following week.
+- *Non-Slide Holidays:* Martin Luther King Jr. Day, Presidents' Day, César Chávez Day, Juneteenth, and Veterans Day do NOT slide curbside collection; City trucks run normal routes.
+
+---
+
+## 3. Official Waste Sorting Ground Truths ("What Goes Where?")
+
+All rules cite official municipal sources:
+- City of San Diego ESD Curbside Recycling Guide
+- Miramar Greenery Composting Regulations (San Diego Municipal Code Chapter 6, Article 6)
+- California Senate Bill 1383 (Mandatory Organic Waste Methane Reduction)
+- California Hazardous Waste Control Law (Health & Safety Code Chapter 6.5)
+
+### A. Blue Bin (Curbside Recycling) — "Empty, Clean, and Dry"
+- **Accepted Materials:**
+  - Rigid Plastics: Containers stamped #1 through #7 (water/soda bottles, milk jugs, detergent jugs, yogurt/butter tubs, takeout plastic clamshells rinsed clean).
+  - Clean Paper & Cardboard: Corrugated boxes (flattened), clean cardboard pizza box lids, office paper, mail, newspapers, paper bags, egg cartons (paper), milk and juice cartons.
+  - Metals: Aluminum beverage cans, tin/steel food cans, clean aluminum foil and foil trays (must be clean and balled up to 2"+).
+  - Glass: Clean bottles and jars (brown, green, clear).
+- **Crucial San Diego MRF Sorting Nuances:**
+  - *Plastic Caps:* Must be SCREWED ON TIGHTLY to empty, clean plastic bottles and jars. Loose plastic caps smaller than 2 inches fall through sorting grates at the Allan Company Material Recovery Facility (MRF) into the landfill reject stream.
+  - *Clean Balled Foil:* Aluminum foil must be free of grease/cheese and compressed into at least a 2-inch ball so it registers as three-dimensional metal on optical sorters rather than fluttering as paper.
+  - *Shredded Paper:* NEVER place loose in the Blue Bin. Loose shreds contaminate glass and plastic. Shredded paper must either be sealed inside a closed paper bag for the Blue Bin or placed loose into the Green Organics Cart.
+  - *Prohibited MRF Tanglers:* Plastic shopping bags, plastic wrap, bubble wrap, stretch film, garden hoses, electrical cords, holiday lights, and wire are strictly forbidden in Blue and Green carts. They wrap around high-speed spinning disks at the Allan Company recycling center, forcing facility shutdowns. Plastic shopping bags should be returned to retail grocery store bins.
+  - *Broken Glass, Windows & Ceramics:* Not recyclable curbside. Wrap securely in paper and place in Black Cart.
+
+### B. Green Bin (Organics & SB 1383) — "Miramar Greenery Feedstock"
+Organics in San Diego are transported to the Miramar Greenery (located at the Miramar Landfill) and transformed into compost and mulch.
+- **Accepted Feedstock:**
+  - Food Scraps: All raw and cooked food waste, plate scrapings, fruits, vegetables, bread, pasta, meat, poultry, fish, bones, shells, seafood, dairy, cheese, butter, coffee grounds, paper coffee filters, and tea bags.
+  - Food-Soiled Uncoated Paper: Greasy pizza box bottoms, paper napkins, paper towels, uncoated paper plates, paper food bags.
+  - Yard & Garden Trimmings: Grass clippings, leaves, weeds, flowers, small branches and tree trimmings (under 4 feet long and under 6 inches in diameter).
+- **Crucial San Diego Organics Nuances:**
+  - *CRITICAL BIOPLASTICS BAN:* The City of San Diego Miramar Greenery DOES NOT ACCEPT "compostable" or "biodegradable" plastic bags, cups, containers, or cutlery (PLA plastics). The processing equipment cannot distinguish them from petroleum plastics, and they do not break down fast enough in municipal compost windrows. Always dispose of "compostable" plastic items in the Black Cart (Trash).
+  - *Bagging Food Scraps:* Food scraps must either be placed loose into the green bin, or wrapped inside newspaper, paper bags, napkins, or paper towels. No plastic or bioplastic bags of any kind.
+  - *Pet Waste (PROHIBITED):* Dog and cat feces and cat litter are strictly banned from the Green Cart due to pathogen contamination (e.g. toxoplasmosis). Pet waste belongs in the Black Cart (Trash).
+  - *Treated Wood, Dirt, & Rocks:* Strictly forbidden in the green cart (damages grinders and contaminates finished compost).
+
+### C. Black Bin (Trash / Landfill)
+- **Landfill Disposables:**
+  - Styrofoam / expanded polystyrene packaging, foam cups, packing peanuts, foam meat trays.
+  - Plastic utensils, plastic straws, plastic coffee pods, potato chip bags, snack wrappers, pet food bags.
+  - Diapers, baby wipes, sanitation wipes, feminine hygiene products.
+  - Food-contaminated aluminum foil with baked-on grease or melted cheese.
+  - Waxed cardboard, broken mirrors, ceramics, window glass.
+
+### D. Special Drop-Off Required (Household Hazardous Waste & E-Waste)
+Under California law, placing hazardous waste or batteries into curbside carts (Black, Blue, or Green) is strictly illegal. Lithium batteries ignite catastrophic fires in collection trucks and recycling facilities.
+- **Items Requiring Drop-Off:**
+  - Batteries: All types (AA, AAA, 9V, button cell, lithium-ion, laptop/phone batteries).
+  - Electronics: Cell phones, computers, monitors, TVs, small appliances.
+  - Chemicals & Auto: Motor oil, oil filters, antifreeze, paint, pesticides, household cleaners, fluorescent tubes, LED bulbs.
+- **Official Facility:**
+  - City of San Diego Household Hazardous Waste (HHW) Transfer Facility
+  - Address: 5161 Convoy St, San Diego, CA 92111 (Miramar Landfill entrance)
+  - Appointments / Phone: 858-694-7000
+  - Eligibility: City of San Diego residents only (proof of residency required).
+
+---
+
+## 4. Benchmark Golden Dilemma Matrix
+
+| Item Query | Target Bin | Operational Rule & Nuance |
+| :--- | :--- | :--- |
+| **Greasy pizza box** | Green Cart | Greasy bottom goes to Green Cart (organics). Clean top lid can be torn off and flattened for Blue Cart (paper). |
+| **Plastic water bottle cap** | Blue Cart | Screw on tightly to empty bottle. Loose caps fall through MRF grates into trash. |
+| **Compostable PLA plastic cup** | Black Cart | Banned at Miramar Greenery. Processing equipment cannot process PLA bioplastics. |
+| **Meat & chicken bones** | Green Cart | Accepted under SB 1383. Miramar Greenery industrial composting safely processes animal proteins and bones. |
+| **Clean aluminum foil** | Blue Cart | Must be clean, dry, and scrunched into a tight ball at least 2 inches in diameter. |
+| **Aluminum foil with food on it** | Black Cart | Food-soiled foil cannot be recycled or composted curbside; dispose in trash. |
+| **Packing peanuts (foam)** | Black Cart | Expanded polystyrene foam cannot be recycled curbside. (Cornstarch peanuts dissolve in water). |
+| **Wrapping paper (plain paper)** | Blue Cart | Plain paper gift wrap is recyclable. Remove ribbons, tape, and bows. |
+| **Wrapping paper (foil/glitter)** | Black Cart | Metallic and glitter coatings contaminate paper pulping vats; dispose in trash. |
+| **Plastic grocery bags** | Black Cart | Dangerous tanglers that jam MRF spinning disks. Return to grocery store collection bins. |
+| **Dog poop / cat litter** | Black Cart | Prohibited from Green Cart due to pathogen contamination. Bag securely for trash. |
+| **AA & Lithium Batteries** | Drop-off | Illegal curbside (fire hazard). Bring to Miramar HHW Facility (5161 Convoy St). |
+| **Shredded paper (loose)** | Green Cart | Loose shreds jam sorting machinery in Blue Cart. Place in Green Cart or inside paper bag in Blue. |
+
+---
+
+## 5. API Reference for AI Agents
+Agents can query CurbDay endpoints over standard HTTPS GET requests:
+
+### Waste Classifier
+`GET https://curbday-sd.vercel.app/api/sort?q={item}`
+- **Response Format:**
+```json
+{
+  "verdict": {
+    "query": "wrapping paper",
+    "itemTitle": "Wrapping Paper & Gift Wrap",
+    "destination": "blue",
+    "binLabel": "Blue Cart (Plain Paper) · Black Cart (Foil/Glitter)",
+    "ruleHeadline": "Only 100% Plain Paper Is Recyclable",
+    "explanation": "Plain paper gift wrap goes in the Blue Cart. Metallic, foil, plastic-coated, or glitter-covered wrapping paper cannot be recycled and must go in the Black Cart.",
+    "citation": "City of San Diego ESD Curbside Recycling Guide"
+  },
+  "telemetry": {
+    "source": "gemini",
+    "model": "gemini-3.8-flash",
+    "latencyMs": 420
+  }
+}
+```
+
+### Schedule & Holiday Slide Lookup
+`GET https://curbday-sd.vercel.app/api/schedule?address={street_address}`
+- **Response Format:**
+```json
+{
+  "profile": {
+    "id": "clairemont",
+    "name": "Clairemont Mesa",
+    "trashDay": 4,
+    "recyclingCadence": "alternate_b"
+  },
+  "upcoming": [
+    {
+      "date": "2026-11-27",
+      "dayName": "Friday morning, Nov 27",
+      "holidayNote": "+1 day · Thanksgiving",
+      "services": ["trash", "organics"]
+    }
+  ]
+}
+```
