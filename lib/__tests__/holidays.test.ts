@@ -6,6 +6,7 @@ import {
   getHolidaysForYear,
   getEffectivePickupDate,
   getPacificCalendarDate,
+  getPacificHour,
   getUpcomingPickups,
   parseDayNameToIndex,
 } from "@/lib/holidays";
@@ -222,6 +223,31 @@ describe("City of San Diego ESD Holiday Slide Engine (lib/holidays.ts)", () => {
       const tomorrow = addCalendarDays(todayPacific, 1);
       expect(formatDateKey(tomorrow)).toBe("2026-10-23");
       expect(tomorrow.getDay()).toBe(5); // Friday - exactly the night before Friday pickup
+    });
+  });
+
+  describe("getPacificHour (Dynamic Daylight Saving Time Adjustment)", () => {
+    it("returns 18 (6:00 PM) for 01:00 UTC during Daylight Saving Time (PDT, UTC-7)", () => {
+      // 01:00 UTC on Oct 23 is 18:00 (6:00 PM) PDT on Oct 22
+      const pdtEveningUtc = new Date("2026-10-23T01:00:00Z");
+      expect(getPacificHour(pdtEveningUtc)).toBe(18);
+    });
+
+    it("returns 19 (7:00 PM) for 02:00 UTC during Daylight Saving Time (PDT, UTC-7)", () => {
+      const pdtLateUtc = new Date("2026-10-23T02:00:00Z");
+      expect(getPacificHour(pdtLateUtc)).toBe(19);
+    });
+
+    it("returns 17 (5:00 PM) for 01:00 UTC during Standard Time (PST, UTC-8)", () => {
+      // 01:00 UTC on Dec 16 is 17:00 (5:00 PM) PST on Dec 15
+      const pstEarlyUtc = new Date("2026-12-16T01:00:00Z");
+      expect(getPacificHour(pstEarlyUtc)).toBe(17);
+    });
+
+    it("returns 18 (6:00 PM) for 02:00 UTC during Standard Time (PST, UTC-8)", () => {
+      // 02:00 UTC on Dec 16 is 18:00 (6:00 PM) PST on Dec 15
+      const pstEveningUtc = new Date("2026-12-16T02:00:00Z");
+      expect(getPacificHour(pstEveningUtc)).toBe(18);
     });
   });
 });

@@ -157,6 +157,19 @@ export function getPacificCalendarDate(now = new Date()): Date {
 }
 
 /**
+ * Returns the current hour (0..23) in San Diego local Pacific time (America/Los_Angeles).
+ * Automatically accounts for Daylight Saving Time (PDT UTC-7 vs. PST UTC-8).
+ */
+export function getPacificHour(now = new Date()): number {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Los_Angeles",
+    hour: "numeric",
+    hourCycle: "h23",
+  });
+  return parseInt(formatter.format(now), 10);
+}
+
+/**
  * Adds a specified number of calendar days to a date (normalized to local noon).
  */
 export function addCalendarDays(date: Date, days: number): Date {

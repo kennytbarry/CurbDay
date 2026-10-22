@@ -112,7 +112,7 @@ CurbDay SD operates on a **$0.00/month budget** with good-faith civic data consu
 - **Frontend & Edge:** Next.js 16 (App Router, Server Components) on **Vercel Hobby** for sub-600ms edge responses.
 - **Respectful Civic Caching:** External City scraping endpoints use **7-Day Incremental Static Regeneration (`revalidate: 604800`)**—querying municipal servers at most once weekly while serving all resident traffic from the edge cache.
 - **Grounded AI Runtime:** **Google Gemini 1.5 Flash (Free Tier)** grounded in official City ESD rules, guarded by in-memory LRU caching and sliding-window rate limiters ([`lib/rate-limiter.ts`](lib/rate-limiter.ts)).
-- **Persistence & Cron:** **Supabase PostgreSQL (Free Tier)** for subscriber storage + **Vercel Cron** running daily at 02:00 UTC (7:00 PM PDT) to dispatch reminders with RFC 8058 one-click unsubscribe.
+- **Persistence & Cron:** **Supabase PostgreSQL (Free Tier)** for subscriber storage + **Vercel Cron** with dynamic Daylight Saving Time adjustment (01:00 UTC PDT / 02:00 UTC PST) to dispatch evening reminders promptly at **6:00 PM PT** with RFC 8058 one-click unsubscribe.
 
 ---
 
@@ -133,7 +133,7 @@ npm run dev
 
 ### Running Tests
 ```bash
-npm test        # 134 unit and integration tests (holidays, rate limits, ESD knowledge)
+npm test        # 138 unit and integration tests (holidays, rate limits, ESD knowledge)
 npm run build   # Next.js production build verification
 ```
 

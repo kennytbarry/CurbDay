@@ -15,6 +15,7 @@ import {
   getEffectivePickupDate,
   getMondayOfWeek,
   getPacificCalendarDate,
+  getPacificHour,
   isSameCalendarDay,
 } from "@/lib/holidays";
 import { isRecyclingWeek } from "@/lib/schedule";
@@ -39,9 +40,25 @@ export async function GET(request: NextRequest) {
     });
   }
 
+  // Guard execution window: Target 6:00 PM Pacific Time (18:00 local).
+  // Vercel crons fire at 01:00 UTC (6:00 PM PDT) and 02:00 UTC (6:00 PM PST) to dynamically
+  // compensate for Daylight Saving Time shifts without manual schedule alterations.
+  // If invoked outside the 6:00 PM PT hour, exit cleanly unless explicitly forced via ?force=true.
+  const isForced =
+    request.nextUrl.searchParams.get("force") === "true" ||
+    request.nextUrl.searchParams.get("force") === "1";
+  const currentPacificHour = getPacificHour();
+
+  if (!isForced && currentPacificHour !== 18) {
+    return NextResponse.json({
+      ok: true,
+      skipped: true,
+      message: `Current Pacific hour is ${currentPacificHour}:00 (target: 18:00 / 6:00 PM PT). Skipping cron execution until local 6:00 PM PT.`,
+    });
+  }
+
   // Pacific Time calculation (America/Los_Angeles)
-  // Vercel cron runs at 02:00 UTC (7:00 PM PDT / 6:00 PM PST).
-  // Using getPacificCalendarDate ensures we evaluate the current local Pacific evening,
+  // Ensures we evaluate the current local Pacific evening,
   // preventing reminders from triggering 2 nights early due to UTC date rollover.
   const todayPacific = getPacificCalendarDate();
   const tomorrow = addCalendarDays(todayPacific, 1);
