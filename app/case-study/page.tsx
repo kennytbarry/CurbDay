@@ -24,7 +24,7 @@ import {
 export const metadata: Metadata = {
   title: "Product Management Case Study | CurbDay San Diego",
   description:
-    "Product Management and Technical Architecture case study for CurbDay SD using Teresa Torres's Opportunity Solution Tree (OST) framework.",
+    "Product Management and Technical Architecture case study for CurbDay SD using an Opportunity Solution Tree framework.",
   alternates: {
     canonical: "https://curbday-sd.vercel.app/case-study",
   },
@@ -233,7 +233,7 @@ export default function CaseStudyPage() {
           </h1>
 
           <p className="text-sm sm:text-base text-flip-slate font-medium max-w-3xl leading-relaxed">
-            How Teresa Torres’s <strong>Opportunity Solution Tree (OST)</strong> turned fragmented municipal portals into a zero-cost civic utility that eliminates $62.50 street sweeping tickets, clarifies recycling weeks, and protects ocean stormwater.
+            How an <strong>Opportunity Solution Tree</strong> turned fragmented municipal portals into a zero-cost civic utility that eliminates $62.50 street sweeping tickets, clarifies recycling weeks, and protects ocean stormwater.
           </p>
         </div>
 
@@ -336,7 +336,7 @@ export default function CaseStudyPage() {
             2. Opportunity Solution Tree: Dual-Sided Civic Value
           </h2>
           <p className="text-xs sm:text-sm text-flip-slate font-medium max-w-3xl leading-relaxed">
-            Applying Teresa Torres’s Continuous Discovery framework revealed that every resident friction point directly mirrors an expensive municipal operational cost for the City of San Diego:
+            Every resident friction point directly mirrors an expensive municipal operational cost for the City of San Diego. Solving for the resident creates measurable civic value:
           </p>
         </div>
 
