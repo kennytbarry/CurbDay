@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Bell, Calendar, Check, Loader2, MapPin, Share2, ShieldAlert, Truck } from "lucide-react";
+import Link from "next/link";
+import { Bell, Calendar, Check, ExternalLink, Loader2, MapPin, Share2, ShieldAlert, Truck } from "lucide-react";
 import AddressSearch from "@/components/AddressSearch";
 import BinStatusHero from "@/components/BinStatusHero";
 import CalendarModal from "@/components/CalendarModal";
@@ -45,6 +46,33 @@ const LOOKAHEAD_WEEKS = 4;
 const CALENDAR_WEEKS = 52;
 
 type AppTab = "schedule" | "special_events";
+
+function AppFooter() {
+  return (
+    <footer className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 pt-4 pb-2 text-center text-[11px] font-medium text-flip-slate">
+      <span>Independent civic project; not an official City of San Diego ESD application.</span>
+      <span className="hidden sm:inline text-flip-slate/50" aria-hidden="true">•</span>
+      <div className="flex items-center gap-2 font-bold text-flip-tealDark">
+        <Link
+          href="/case-study"
+          className="hover:text-flip-dark hover:underline transition-colors"
+        >
+          📖 Product Case Study
+        </Link>
+        <span className="text-flip-slate/50" aria-hidden="true">•</span>
+        <a
+          href="https://github.com/kennytbarry/CurbDay#readme"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 hover:text-flip-dark hover:underline transition-colors"
+        >
+          <span>💻 GitHub Repository</span>
+          <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
+        </a>
+      </div>
+    </footer>
+  );
+}
 
 export default function CurbDayApp({
   profiles,
@@ -283,6 +311,10 @@ export default function CurbDayApp({
               <span>Looking up collection & sweeping schedules…</span>
             </div>
           )}
+        </div>
+
+        <div className="w-full max-w-lg">
+          <AppFooter />
         </div>
       </main>
     );
@@ -591,9 +623,7 @@ export default function CurbDayApp({
         </div>
       )}
 
-      <footer className="flex flex-wrap items-center justify-center pt-2 text-center text-[11px] font-semibold text-flip-slate">
-        <span>Not affiliated with the City of San Diego.</span>
-      </footer>
+      <AppFooter />
     </div>
   );
 }
