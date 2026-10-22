@@ -1,5 +1,7 @@
-# CurbDay SD — Product Management Case Study
+# CurbDay SD 🚛🏄 — Product Management Case Study
 ### *A Dual-Sided Civic Tech Platform Modernizing Municipal Sanitation & Street Sweeping for 1.4M San Diegans*
+
+> *"Wheels in, surf’s up"* 🏄
 
 [![Production App](https://img.shields.io/badge/Production-curbday--sd.vercel.app-2BA8A2?style=for-the-badge&logo=vercel&logoColor=white)](https://curbday-sd.vercel.app/)
 [![Interactive Case Study](https://img.shields.io/badge/Interactive_Case_Study-Live_Web_Route-FFD23F?style=for-the-badge&logo=read-the-docs&labelColor=142826&color=FFD23F)](https://curbday-sd.vercel.app/case-study)
@@ -18,7 +20,7 @@
 
 | Dimension | Details |
 | :--- | :--- |
-| **Product** | **CurbDay SD** ([curbday-sd.vercel.app](https://curbday-sd.vercel.app/)) |
+| **Product** | **CurbDay SD** 🚛🏄 ([curbday-sd.vercel.app](https://curbday-sd.vercel.app/)) |
 | **Author** | Kenny Barry (Product Management & Architecture) |
 | **Target Audience** | 1,400,000+ residents living in single-family homes and serviced multi-family units across the City of San Diego |
 | **Municipal Counterpart** | City of San Diego Environmental Services Department (ESD) & Transportation Department (Street Sweeping) |

@@ -229,7 +229,7 @@ export default function CaseStudyPage() {
           </div>
 
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-flip-dark leading-tight">
-            CurbDay SD: Modernizing Municipal Sanitation for 1.4M San Diegans
+            CurbDay SD 🚛🏄: Modernizing Municipal Sanitation for 1.4M San Diegans
           </h1>
 
           <p className="text-sm sm:text-base text-flip-slate font-medium max-w-3xl leading-relaxed">
